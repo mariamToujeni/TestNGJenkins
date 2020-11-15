@@ -6,7 +6,7 @@
             <class name="org.example.Test1">
                 <methods>
                     <include name="test12"/>
-                    <include name="test22"/>
+                    <exclude name="test22"/>
                 </methods>
             </class>
         </classes>

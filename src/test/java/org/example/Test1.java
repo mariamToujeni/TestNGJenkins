@@ -36,13 +36,15 @@ public class Test1 {
     public void test12() throws Exception {
         WebElement goo = driver.findElement(By.name("q"));
         goo.sendKeys("test1");
-
+        System.out.println("test1");
     }
 
     @Test(testName = "test2", priority = 2)
     public void test22() throws Exception {
         WebElement goo = driver.findElement(By.name("q"));
         goo.sendKeys("test2");
+        System.out.println("test2");
+
     }
 
     @AfterTest

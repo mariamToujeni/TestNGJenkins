@@ -1,8 +1,7 @@
 pipeline {
-    agent any
-
-
-
+    agent {
+        docker { image 'mariamtoujani/testngtools' }
+    }
     stages {
         stage('Build') {
             steps {
@@ -10,10 +9,8 @@ pipeline {
                 git 'https://github.com/mariamToujeni/TestNGJenkins.git'
 
                 // Run Maven on a Unix agent.
-                sh "mvn clean test -Dwebdriver.chrome.driver=/home/hamza/workspace/tools/chromedriver_linux64/chromedriver"
+                sh "mvn clean test -Dwebdriver.chrome.driver=/opt/selenium/chromedriver-86.0.4240.22"
 
-                // To run Maven on a Windows agent, use
-                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
 
             post {
