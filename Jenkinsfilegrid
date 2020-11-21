@@ -1,0 +1,30 @@
+pipeline {
+    agent {
+        docker { image 'mariamtoujani/testngtools' }
+    }
+    stages {
+        stage('Build') {
+            steps {
+                // Get some code from a GitHub repository
+                git 'https://github.com/mariamToujeni/TestNGJenkins.git'
+
+                // Run Maven on a Unix agent.
+                sh "mvn clean test -Dsurefire.suiteXmlFiles=testng.xml"
+
+                //Docker compose
+                sh "docker-compose -f docker-compose.yml up -d"
+            }
+
+//            post {
+//                // If Maven was able to run the tests, even if some of the test
+//                // failed, record the test results.
+//                success {
+//                    junit '**/target/surefire-reports/TEST-*.xml'
+//                }
+//                always {
+//                    step([$class: 'Publisher', reportFilenamePattern: '**/testng-results.xml'])
+//                }
+//            }
+        }
+    }
+}

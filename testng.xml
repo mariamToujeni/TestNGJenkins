@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite">
-    <test verbose="2" preserve-order="true" name="/home/hamza/workspace/TestNGJenkins/src/test">
+<suite thread-count="2" name="SeleniumGridDocker" parallel="tests">
+
+    <!--<suite name="All Test Suite">
+        <test verbose="2" preserve-order="true" name="/home/hamza/workspace/TestNGJenkins/src/test">
+            <classes>
+                <class name="org.example.Test1">
+                    <methods>
+                        <include name="test12"/>
+                        <exclude name="test22"/>
+                    </methods>
+                </class>
+            </classes>
+        </test>-->
+    <test name="Chrome Test">
+        <parameter name="browser" value="chrome" />
+        <parameter name="Port" value="9001" />
         <classes>
-            <class name="org.example.Test1">
+            <class name="org.example.Test2">
                 <methods>
                     <include name="test12"/>
-                    <exclude name="test22"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Firefox Test">
+        <parameter name="browser" value="firefox" />
+        <parameter name="Port" value="9002" />
+        <classes>
+            <class name="org.example.Test2">
+                <methods>
+                    <include name="test22"/>
                 </methods>
             </class>
         </classes>
     </test>
 </suite>
+
+
+
